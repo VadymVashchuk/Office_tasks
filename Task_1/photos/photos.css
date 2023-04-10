@@ -46,16 +46,18 @@ button:hover {
 
 .photos__el {
   width: 23%;
+  height: 250px;
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   margin: 10px;
 }
 
 .photos__el__title {
-  width: 50%;
+  width: 80%;
+  font-size: 0.9em;
   margin: 10px 0px;
 }
 
