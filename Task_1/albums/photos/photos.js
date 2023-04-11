@@ -1,5 +1,7 @@
 const albumPhotos = document.querySelector("#photos-wrapper");
 const allBtns = document.querySelector("#btns-wrapper");
+const bigPhotoWindow = document.querySelector("#photo-window");
+const bigImgWrapper = document.querySelector("#big-img-wrapper")
 
 function showPhotos(albumId) {
   fetch("https://jsonplaceholder.typicode.com/photos")
@@ -17,7 +19,7 @@ function addAlbumsPhotos(arr) {
   for (i = 0; i < arr.length; i++) {
     albumPhotos.innerHTML += `<div class="photos__el">
       <div class="photos__el__title">${arr[i].title}</div>
-      <div class="photos__el__photo"><a href="${arr[i].url}"><img src="${arr[i].thumbnailUrl}" alt="Error"></a></div>
+      <div class="photos__el__photo"><img src="${arr[i].thumbnailUrl}" onclick="showBigPhoto('${arr[i].url}')" /></div>
     </div>`;
   }
   allBtns.innerHTML += `<button class="home-btn" onclick="clearPhotos()">CLEAR</button>`;
@@ -41,4 +43,13 @@ function clearActiveClassOnBtns() {
   if (alreadyActiveBtn) {
     alreadyActiveBtn.classList.remove("active");
   }
+}
+
+function showBigPhoto(photoUrl) {
+  bigPhotoWindow.style.display = "flex";
+  bigImgWrapper.innerHTML = `<img src='${photoUrl}' />`
+}
+
+function hideBigPhoto() {
+  bigPhotoWindow.style.display = "none";
 }

@@ -22,3 +22,7 @@
   font-size: 0.9em;
   margin: 10px 0px;
 }
+
+.photos__el__photo:hover {
+  cursor: pointer;
+}
