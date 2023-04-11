@@ -9,7 +9,7 @@
 html,
 body {
   height: 100%;
-  padding: 10px 25px;
+  padding: 10px 15px;
   background-color: #f3d6e4;
 }
 
@@ -26,7 +26,7 @@ button {
 }
 
 .main-title {
-  margin: 10px;
+  margin: 0px 10px;
   color: rgb(75, 3, 36);
   font-size: 40px;
 }
@@ -40,12 +40,12 @@ button {
 
 .content {
   flex: 1 1 auto;
-  padding: 20px 20px 0px 20px;
+  padding: 0px 20px 0px 20px;
 }
 
 th {
   font-size: 24px;
-  padding: 20px;
+  padding: 10px;
 }
 
 td {

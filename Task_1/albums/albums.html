@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="albums.css" />
+    <link rel="stylesheet" href="./photos/photos.css" />
     <title>Album</title>
   </head>
   <body>
@@ -22,14 +23,17 @@
           </thead>
           <tbody id="albums-table-body"></tbody>
         </table>
-        <div id="pagination">
+        <div id="pagination"></div>
+        <div id="btns-wrapper">
+          <button class="home-btn" onclick="location.href='../index.html'">
+            HOME
+          </button>
         </div>
-        <button class="home-btn" onclick="location.href='../index.html'">
-          HOME
-        </button>
       </div>
+      <div id="photos-wrapper"></div>
       <div class="footer">All rights reserved</div>
     </div>
     <script src="albums.js"></script>
+    <script src="./photos/photos.js"></script>
   </body>
 </html>
