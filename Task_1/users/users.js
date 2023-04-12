@@ -1,3 +1,13 @@
+let usersLogin = localStorage.getItem('login')
+
+window.onload = function() {
+  if (usersLogin === 'User1') {
+  } else {
+    window.alert('PLEASE LOG IN!!')
+    location.href = "../index.html"
+  }
+}
+
 const users = document.querySelector("#users-table-body");
 
 fetch("https://jsonplaceholder.typicode.com/users")
@@ -12,7 +22,12 @@ function addUsers(arr) {
         <td>${arr[i].address.city}</td>
         <td>${arr[i].email}</td>
         <td>${arr[i].phone}</td>
-        <td><button class="show-album-btn" onclick="location.href='./albums/albums.html?userId=${arr[i].id}&username=${arr[i].username}'">SHOW ALBUM</button></td>
+        <td><button class="show-album-btn" onclick="location.href='../albums/albums.html?userId=${arr[i].id}&username=${arr[i].username}'">SHOW ALBUM</button></td>
       </tr>`
   }
+}
+
+function logOut() {
+  location.href = "../index.html";
+  localStorage.clear();
 }

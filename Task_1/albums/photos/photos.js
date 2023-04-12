@@ -27,7 +27,7 @@ function addAlbumsPhotos(arr) {
 
 function clearPhotos() {
   albumPhotos.innerHTML = "";
-  allBtns.innerHTML = `<button class="home-btn" onclick="location.href='../index.html'">HOME</button>`;
+  allBtns.innerHTML = `<button class="home-btn" onclick="location.href='../users/users.html'">HOME</button>`;
   clearActiveClassOnBtns();
   idOfTheShownAlbum = null;
 }

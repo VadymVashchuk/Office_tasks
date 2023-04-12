@@ -1,3 +1,14 @@
+let usersLogin = localStorage.getItem('login')
+let usersPassword = localStorage.getItem('password')
+
+window.onload = function() {
+  if (usersLogin === 'User1') {
+  } else {
+    window.alert('PLEASE LOG IN!!')
+    location.href = "../index.html"
+  }
+}
+
 const usersAlbums = document.querySelector("#albums-table-body");
 const pagination = document.querySelector("#pagination");
 const mainTitle = document.querySelector("#main-title");
