@@ -137,3 +137,34 @@ thead th:nth-child(2) {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.281);
 }
+
+.user-info-pannel {
+  width: 300px;
+  height: 50px;
+  background-color: #ecececb6;
+  position: absolute;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 40px;
+  font-size: 20px;
+}
+
+.logged-as {
+  font-size: 16px;
+  color: rgb(49, 49, 49);
+}
+
+#currentUserLogin {
+  font-weight: 600;
+  color: rgb(75, 3, 36);
+}
+
+.logOutBtn {
+  background-color: #ececec;
+  cursor: pointer;
+  color: rgb(75, 3, 36);
+  font-weight: 800;
+  font-size: 13.3px;
+}

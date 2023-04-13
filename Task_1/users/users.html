@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="users.css" />
+    <title>Users Page</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div>
+        <h1 class="main-title">ALL USERS</h1>
+      </div>
+      <div class="user-info-pannel">
+        <div class="currentUser">
+          <div class="logged-as">Logged in as:</div>
+          <div id="currentUserLogin"></div>
+        </div>
+        <button class="show-album-btn" id="logOutBtn" onclick="logOut()">LOG OUT</button>
+      </div>
+      <div class="content">
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Album</th>
+            </tr>
+          </thead>
+          <tbody id="users-table-body"></tbody>
+        </table>
+      </div>
+      <div class="footer">All rights reserved</div>
+    </div>
+    <script src="../usersBase.js"></script>
+    <script src="users.js"></script>
+  </body>
+</html>

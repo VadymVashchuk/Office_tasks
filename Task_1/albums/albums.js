@@ -1,3 +1,14 @@
+let usersLogin = localStorage.getItem('login')
+let usersPassword = localStorage.getItem('password')
+
+window.onload = function() {
+  if (userValidation(usersLogin, usersPassword)) {
+    document.getElementById('currentUserLogin').innerHTML = usersLogin;
+  } else {
+    location.href = "../index.html"
+  }
+}
+
 const usersAlbums = document.querySelector("#albums-table-body");
 const pagination = document.querySelector("#pagination");
 const mainTitle = document.querySelector("#main-title");
@@ -61,4 +72,9 @@ function showAlbums(pageNumer) {          //функція, яка робить 
       shownAlbumBtn.classList.add("active");
     }
   }
+}
+
+function logOut() {
+  location.href = "../index.html";
+  localStorage.clear();
 }
