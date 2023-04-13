@@ -2,9 +2,9 @@ let usersLogin = localStorage.getItem('login')
 let usersPassword = localStorage.getItem('password')
 
 window.onload = function() {
-  if (usersLogin === 'User1') {
+  if (userValidation(usersLogin, usersPassword)) {
+    document.getElementById('currentUserLogin').innerHTML = usersLogin;
   } else {
-    window.alert('PLEASE LOG IN!!')
     location.href = "../index.html"
   }
 }
@@ -72,4 +72,9 @@ function showAlbums(pageNumer) {          //функція, яка робить 
       shownAlbumBtn.classList.add("active");
     }
   }
+}
+
+function logOut() {
+  location.href = "../index.html";
+  localStorage.clear();
 }

@@ -77,3 +77,26 @@ tbody tr:nth-child(odd) {
 .footer {
   margin: 10px;
 }
+
+.user-info-pannel {
+  width: 300px;
+  height: 50px;
+  background-color: rgba(207, 227, 231, 0.603);
+  position: absolute;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 40px;
+  font-size: 20px;
+}
+
+.logged-as {
+  font-size: 16px;
+  color: rgb(49, 49, 49);
+}
+
+#currentUserLogin {
+  font-weight: 600;
+  color: rgb(18, 18, 90);
+}

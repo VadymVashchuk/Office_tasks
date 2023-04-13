@@ -1,7 +1,10 @@
-let usersLogin = localStorage.getItem('login')
+let usersLogin = localStorage.getItem('login');
+let usersPassword = localStorage.getItem('password')
+
+const wrongLoginScreen = document.querySelector('#wrong-data-screen-wrapper')
 
 window.onload = function() {
-  if (usersLogin === 'User1') {
+  if (userValidation(usersLogin, usersPassword)) {
     location.href = "./users/users.html"
   }
 }
@@ -12,11 +15,11 @@ const userPassword = document.querySelector('#user-password');
 
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
-  if ((userLogin.value === 'User1' && userPassword.value === '1111a') || (userLogin.value === 'User2' && userPassword.value === '2222a') || (userLogin.value === 'User3' && userPassword.value === '3333a')) {
+  if (userValidation(userLogin.value, userPassword.value)) {
     location.href = './users/users.html';
     addUserData(userLogin.value, userPassword.value);
   } else {
-    window.alert('wrong')
+    wrongLoginScreen.style.display = "flex";
   }
 })
 
@@ -25,7 +28,8 @@ localStorage.setItem('login', login);
 localStorage.setItem('password', password);
 }
 
-
-// User1 - 1111a
-// User2 - 2222a
-// User3 - 3333a
+function tryAgain() {
+  wrongLoginScreen.style.display = "none";
+  userLogin.value = '';
+  userPassword.value = '';
+}

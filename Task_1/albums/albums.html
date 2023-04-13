@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="albums.css" />
     <link rel="stylesheet" href="./photos/photos.css" />
-    <title>Album</title>
+    <title>Albums</title>
   </head>
   <body>
     <div class="wrapper">
       <div>
         <h1 id="main-title">USER'S ALBUM</h1>
+      </div>
+      <div class="user-info-pannel">
+        <div class="currentUser">
+          <div class="logged-as">Logged in as:</div>
+          <div id="currentUserLogin"></div>
+        </div>
+        <button class="show-photos-btn logOutBtn" id="logOutBtn" onclick="logOut()">LOG OUT</button>
       </div>
       <div class="content">
         <table id="albums-table">
@@ -37,6 +44,7 @@
       <div id="big-img-wrapper"></div>
       <img class="x-img" src="https://unitx140033354.files.wordpress.com/2016/03/delete_sign-256.png" onclick="hideBigPhoto()" alt="Error">
     </div>
+    <script src="../usersBase.js"></script>
     <script src="albums.js"></script>
     <script src="./photos/photos.js"></script>
   </body>
