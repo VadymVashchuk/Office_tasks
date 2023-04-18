@@ -28,11 +28,8 @@
             <input type="submit" value="Log In" id="logInBtn" />
           </div>
         </form>
+        <div id="wrong-data-wrapper"></div>
       </div>
-    </div>
-    <div id="wrong-data-screen-wrapper">
-      <div class="wrong-data-text"><h2>WRONG EMAIL OR PASSWORD!</h2></div>
-      <button id="try-again-btn" onclick="tryAgain()">TRY AGAIN</button>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
@@ -51,7 +48,6 @@
       const db = firebaseApp.firestore();
       const auth = firebaseApp.auth();
     </script>
-    <script src="usersBase.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

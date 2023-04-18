@@ -1,8 +1,9 @@
-let usersLogin = localStorage.getItem('login')
-let usersPassword = localStorage.getItem('password')
+let usersLogin = localStorage.getItem('login');
+let usersPassword = localStorage.getItem('password');
+let isLoggedIn = localStorage.getItem('isLoggedIn');
 
 window.onload = function() {
-  if (userValidation(usersLogin, usersPassword)) {
+  if (isLoggedIn === 'true') {
     document.getElementById('currentUserLogin').innerHTML = usersLogin;
   } else {
     location.href = "../index.html"
@@ -29,6 +30,6 @@ function addUsers(arr) {
 }
 
 function logOut() {
-  location.href = "../index.html";
   localStorage.clear();
+  location.href = "../index.html";
 }

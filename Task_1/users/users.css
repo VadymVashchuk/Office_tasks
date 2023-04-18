@@ -79,7 +79,7 @@ tbody tr:nth-child(odd) {
 }
 
 .user-info-pannel {
-  width: 300px;
+  width: 400px;
   height: 50px;
   background-color: rgba(207, 227, 231, 0.603);
   position: absolute;

@@ -50,6 +50,7 @@ input {
 .logInBtn {
   display: flex;
   justify-content: center;
+  margin-bottom: 0px;
 }
 
 #logInBtn {
@@ -65,35 +66,12 @@ input {
   border: 1px solid black;
 }
 
-#wrong-data-screen-wrapper {
-  display: none;
-  position: fixed;
-  left: 30%;
-  top: 25%;
-  width: 40%;
-  height: 50%;
-  background-color: rgb(175, 124, 162);
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.wrong-data-text {
-  font-size: 26px;
-  margin-bottom: 50px;
+#wrong-data-wrapper {
+  display: block;
+  height: 50px;
+  width: 100%;
   text-align: center;
-}
-
-#try-again-btn {
-  cursor: pointer;
-  font-size: 24px;
-  background-color: #f1eef0;
-  font-weight: 600;
-  padding: 10px;
-  border: 3px solid #e0c7d4;
-}
-
-#try-again-btn:hover {
-  background-color: #e2dee1;
-  border: 3px solid #a8a6a7;
+  padding: 12px;
+  color: red;
+  font-size: 18px;
 }
