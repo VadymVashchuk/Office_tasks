@@ -1,14 +1,14 @@
-let usersLogin = localStorage.getItem('login');
-let usersPassword = localStorage.getItem('password');
-let isLoggedIn = localStorage.getItem('isLoggedIn');
+let usersLogin = localStorage.getItem("login");
+let usersPassword = localStorage.getItem("password");
+let isLoggedIn = localStorage.getItem("isLoggedIn");
 
-const wrongLoginText = document.querySelector('#wrong-data-wrapper')
+const wrongLoginText = document.querySelector("#wrong-data-wrapper");
 
-window.onload = function() {
-  if (isLoggedIn === 'true') {
+window.onload = function () {
+  if (isLoggedIn === "true") {
     location.href = "./users/users.html";
   }
-}
+};
 
 // window.onload = function() {     ----------------- ПАРАЛЕЛЬНА ПЕРЕВІРКА ЧЕРЕЗ ЗАПРОС НА FIREBASE ЯКЩО РАПТОМ ТРЕБА БУДЕ ВОНА
 //   firebase.auth().signInWithEmailAndPassword(usersLogin, usersPassword)
@@ -17,24 +17,28 @@ window.onload = function() {
 // }, function(error) {console.clear()})
 // }
 
-const loginForm = document.querySelector('#login-form');
-const userLogin = document.querySelector('#user-login');
-const userPassword = document.querySelector('#user-password');
+const loginForm = document.querySelector("#login-form");
+const userLogin = document.querySelector("#user-login");
+const userPassword = document.querySelector("#user-password");
 
-loginForm.addEventListener('submit', function (e) {
+loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  firebase.auth().signInWithEmailAndPassword(userLogin.value, userPassword.value)
-  .then(function () {
-    location.href = './users/users.html';
-    addUserData(userLogin.value, userPassword.value);
-  }, function(error) {
-    console.log(error.code);
-    wrongLoginText.innerHTML = error.message;
- });
-})
+  firebase
+    .auth()
+    .signInWithEmailAndPassword(userLogin.value, userPassword.value)
+    .then(
+      function () {
+        location.href = "./users/users.html";
+        addUserData(userLogin.value, userPassword.value);
+      },
+      function (error) {
+        wrongLoginText.innerHTML = error.message.replace("Firebase: ", "");
+      }
+    );
+});
 
 function addUserData(login, password) {
-localStorage.setItem('login', login);
-localStorage.setItem('password', password);
-localStorage.setItem('isLoggedIn', 'true');
+  localStorage.setItem("login", login);
+  localStorage.setItem("password", password);
+  localStorage.setItem("isLoggedIn", "true");
 }
