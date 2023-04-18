@@ -1,3 +1,5 @@
+console.log(db)
+
 let usersLogin = localStorage.getItem('login');
 let usersPassword = localStorage.getItem('password')
 

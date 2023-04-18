@@ -13,7 +13,12 @@
         <form id="login-form">
           <div class="form__element">
             <label for="email">Enter your email:</label>
-            <input type="text" name="email" id="user-login" autocomplete="off" />
+            <input
+              type="text"
+              name="email"
+              id="user-login"
+              autocomplete="off"
+            />
           </div>
           <div class="form__element">
             <label for="password">Enter your password:</label>
@@ -29,6 +34,23 @@
       <div class="wrong-data-text"><h2>WRONG EMAIL OR PASSWORD!</h2></div>
       <button id="try-again-btn" onclick="tryAgain()">TRY AGAIN</button>
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseApp = firebase.initializeApp({
+        apiKey: "AIzaSyC9VwcD50L1dBf8Og5WJ_-0AWpnGKW3H7E",
+        authDomain: "office-task-1.firebaseapp.com",
+        databaseURL: "https://office-task-1-default-rtdb.firebaseio.com",
+        projectId: "office-task-1",
+        storageBucket: "office-task-1.appspot.com",
+        messagingSenderId: "711388309278",
+        appId: "1:711388309278:web:e4ab80237d796871380b0f",
+      });
+      const db = firebaseApp.firestore();
+      const auth = firebaseApp.auth();
+    </script>
     <script src="usersBase.js"></script>
     <script src="script.js"></script>
   </body>
