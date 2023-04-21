@@ -10,17 +10,17 @@ html,
 body {
   height: 100%;
   padding: 10px 25px;
-  background-color: #71c2cf;
+  background-color: #73b99b;
 }
 
 button:hover {
-  background-color: rgb(18, 18, 90);
+  background-color: rgb(0, 80, 11);
   color: white;
 }
 
 .main-title {
   margin: 10px;
-  color: rgb(18, 18, 90);
+  color: rgb(0, 80, 11);
   font-size: 40px;
 }
 
@@ -33,19 +33,19 @@ button:hover {
 
 .content {
   flex: 1 1 auto;
-  border: 10px solid rgb(165, 213, 221);
+  border: 10px solid rgb(61, 126, 85);
   padding: 20px;
 }
 
 th {
-  font-size: 18px;
+  font-size: 20px;
   padding: 20px;
 }
 
 td {
-  font-size: 16px;
-  padding: 20px;
-  width: 16.6%;
+  font-size: 18px;
+  height: 100px;
+  width: 20%;
   text-align: center;
 }
 
@@ -57,20 +57,20 @@ table {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: rgba(207, 227, 231, 0.337);
+  background-color: rgba(207, 231, 222, 0.337);
 }
 
 .user__username {
   font-weight: 600;
 }
 
-.show-album-btn {
+.common-btn {
   background-color: rgb(211, 224, 226);
   padding: 0 10px;
   min-height: 30px;
   border-radius: 4%;
   cursor: pointer;
-  color: rgb(18, 18, 90);
+  color: rgb(0, 80, 11);
   font-weight: 800;
 }
 
@@ -81,7 +81,7 @@ tbody tr:nth-child(odd) {
 .user-info-pannel {
   width: 400px;
   height: 50px;
-  background-color: rgba(207, 227, 231, 0.603);
+  background-color: rgba(207, 231, 222, 0.337);
   position: absolute;
   right: 6%;
   display: flex;
@@ -98,5 +98,51 @@ tbody tr:nth-child(odd) {
 
 #currentUserLogin {
   font-weight: 600;
-  color: rgb(18, 18, 90);
+  color: rgb(0, 80, 11);
+}
+
+.item_img {
+  width: 80px;
+  height: 80px;
+}
+
+.change-content-btns__el {
+  margin: 30px 5px 0px 5px;
+  font-size: 18px;
+}
+
+.form__el {
+  display: flex;
+  flex-direction: column;
+}
+
+#edit-form {
+  margin: 20px;
+  display: none;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100px;
+  background-color: rgba(207, 231, 222, 0.337);
+}
+
+#edit-form input {
+  height: 30px;
+  margin-top: 5px;
+  font-size: 16px;
+  background-color: rgb(236, 230, 230);
+  border: #73b99b;
+}
+
+#edit-form input:focus {
+  outline: rgb(0, 80, 11) 2px solid;
+  border: rgb(0, 80, 11);
+}
+
+#edit-form button {
+  margin: 5px 0px;
+}
+
+.ready-to-choose:hover {
+  cursor: pointer;
+  outline: rgb(0, 80, 11) solid 4px;
 }

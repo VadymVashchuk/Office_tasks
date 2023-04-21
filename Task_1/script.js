@@ -23,11 +23,8 @@ const userPassword = document.querySelector("#user-password");
 
 loginForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(userLogin.value, userPassword.value)
-    .then(
-      function () {
+  firebase.auth().signInWithEmailAndPassword(userLogin.value, userPassword.value)
+    .then(function () {
         location.href = "./users/users.html";
         addUserData(userLogin.value, userPassword.value);
       },

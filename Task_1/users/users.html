@@ -4,35 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="users.css" />
-    <title>Users Page</title>
+    <title>Wardrobe</title>
   </head>
   <body>
     <div class="wrapper">
       <div>
-        <h1 class="main-title">WARDROBE</h1>
+        <h1 class="main-title" id="main-title">WARDROBE OF ...</h1>
       </div>
       <div class="user-info-pannel">
         <div class="currentUser">
           <div class="logged-as">Logged in as:</div>
           <div id="currentUserLogin"></div>
         </div>
-        <button class="show-album-btn" id="logOutBtn" onclick="logOut()">LOG OUT</button>
+        <button class="common-btn" id="logOutBtn" onclick="logOut()">LOG OUT</button>
       </div>
       <div class="content">
-        <table id="users-table">
+        <table id="wardrobe-table">
           <thead>
             <tr>
-              <th>User</th>
-              <th>Name</th>
-              <th>City</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Album</th>
+              <th>Item name</th>
+              <th>Color</th>
+              <th>Size</th>
+              <th>Purpose of use</th>
+              <th>Picture</th>
             </tr>
           </thead>
-          <tbody id="users-table-body"></tbody>
+          <tbody id="wardrobe-table-body"></tbody>
         </table>
-      </div>
+        <div class="change-content-btns-wrapper">
+          <button class="common-btn change-content-btns__el" id="btn-add" onclick="addNewItem()">ADD</button>
+          <button class="common-btn change-content-btns__el" id="btn-edit" onclick="editItem()">EDIT</button>
+          <button class="common-btn change-content-btns__el" id="btn-del" onclick="delItem()">DEL</button>
+        </div>
+          <form id="edit-form">
+            <div class="form__el">
+              <label for="name">Item name</label>
+              <input type="text" name="name" id="input-name" class="edit-form-input" autocomplete="off">
+            </div>
+            <div class="form__el">
+              <label for="color">Color</label>
+              <input type="text" name="color" id="input-color" class="edit-form-input" autocomplete="off">
+            </div>
+            <div class="form__el">
+              <label for="size">Size</label>
+              <input type="text" name="size" id="input-size" class="edit-form-input" autocomplete="off">
+            </div>
+            <div class="form__el">
+              <label for="purpose">Purpose of use</label>
+              <input type="text" name="purpose" id="input-purpose" class="edit-form-input" autocomplete="off">
+            </div>
+            <div class="form__el">
+              <label for="picture">Picture URL</label>
+              <input type="text" name="picture" id="input-picture" class="edit-form-input" autocomplete="off">
+            </div>
+            <div class="form__el">
+              <button type="button" class="common-btn" id="add-btn" onclick="sendNewDoc()">Add</button>
+              <button type="button" class="common-btn" id="edit-btn" onclick="setDoc()">Edit</button>
+              <button type="reset" class="common-btn" id="reset-btn">Reset</button>
+            </div>
+          </form>
+        </div>
       <div class="footer">All rights reserved</div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
