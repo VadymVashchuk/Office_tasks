@@ -54,7 +54,6 @@ td {
   text-align: center;
 }
 
-
 table {
   /* table-layout: fixed; */
   width: 100%;
@@ -138,10 +137,6 @@ tbody tr:nth-child(odd) {
   width: 70px;
 }
 
-/* #add-btn, #edit-btn, #cancel-btn {
-  width: 80px;
-} */
-
 #edit-form {
   margin: 20px 0;
   display: none;
@@ -151,12 +146,13 @@ tbody tr:nth-child(odd) {
   background-color: rgba(207, 231, 222, 0.337);
 }
 
-#edit-form input {
+#edit-form input, #local-edit-form input {
   height: 30px;
   margin-top: 5px;
   font-size: 16px;
   background-color: rgb(236, 230, 230);
   border: #73b99b;
+  text-align: center;
 }
 
 #edit-form input:focus {
@@ -166,11 +162,6 @@ tbody tr:nth-child(odd) {
 
 #edit-form button {
   margin: 5px 0px;
-}
-
-.ready-to-choose:hover {
-  cursor: pointer;
-  outline: rgb(0, 80, 11) solid 4px;
 }
 
 .edit-btns__el {
@@ -185,9 +176,37 @@ tbody tr:nth-child(odd) {
 }
 
 .btns-wrapper {
-  width: 7.5;
+  width: 7.5%;
 }
 
 .btns-wrapper button {
   display: block;
+}
+
+#local-edit-form {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(207, 231, 222, 0.337);
+  height: 100px;
+  outline: rgb(0, 80, 11) solid 3px;
+  font-size: 16px;
+}
+
+#local-edit-form .form__el {
+  width: 18.5%;
+  align-items: center;
+}
+
+#local-edit-form input {
+  width: 60%;
+}
+
+#local-edit-form .local-form__btns {
+  width: 7.5%;
+  align-items: flex-start;
+}
+
+#local-edit-form .common-btn {
+  width: 65px;
 }

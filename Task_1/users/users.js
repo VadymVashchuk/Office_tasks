@@ -72,16 +72,13 @@ db.collection(usersLogin).onSnapshot(snapshot => {
 
 const bigAddBtn = document.querySelector("#btn-add");
 const editForm = document.querySelector("#edit-form");
-const smallBtnAdd = document.querySelector("#add-btn");
-const smallBtnEdit = document.querySelector("#edit-btn");
 const bigAddBtnWrapper = document.querySelector('.change-content-btns-wrapper')
+let localEditForm;
+let arrOfTds;
 
 function addNewItem() {
   editForm.style.display = "flex";
-  smallBtnAdd.style.display = "inline";
-  smallBtnEdit.style.display = "none";
-  bigAddBtn.style.display = "none";
-  bigAddBtnWrapper.style.display = "none"
+  bigAddBtnWrapper.style.display = "none";
 }
 
 function sendNewDoc() {
@@ -92,7 +89,17 @@ function sendNewDoc() {
     purpose: editForm.purpose.value,
     picture: editForm.picture.value,
   });
-  cancelEditing();
+  cancelAdding();
+}
+
+function cancelAdding() {
+  editForm.style.display = "none";
+  bigAddBtnWrapper.style.display = "block";
+  editForm.name.value = '';
+  editForm.color.value = '';
+  editForm.size.value = '';
+  editForm.purpose.value = '';
+  editForm.picture.value = '';
 }
 
 // Edit item
@@ -101,30 +108,85 @@ let itemEditing;
 
 function editItem(idOfItem) {
   itemEditing = document.getElementById(`${idOfItem}`)
-  let arrOfTds = itemEditing.querySelectorAll('td')
+  arrOfTds = itemEditing.querySelectorAll('td')
 
-  editForm.style.display = "flex";
-  smallBtnAdd.style.display = "none";
-  smallBtnEdit.style.display = "inline";
-  bigAddBtnWrapper.style.display = "none";
+  bigAddBtn.setAttribute("disabled", "true");
 
-  editForm.name.value = arrOfTds[0].innerHTML;
-  editForm.color.value = arrOfTds[1].innerHTML;
-  editForm.size.value = arrOfTds[2].innerHTML;
-  editForm.purpose.value = arrOfTds[3].innerHTML;
-  editForm.picture.value = arrOfTds[4].children[0].src;
+  itemEditing.innerHTML = `<td colspan="6">
+    <div class="local-edit-form-wrapper">
+      <form id="local-edit-form">
+        <div class="form__el">
+          <label for="name">Item name</label>
+          <input type="text" name="name" class="edit-form-input" autocomplete="off">
+        </div>
+        <div class="form__el">
+          <label for="color">Color</label>
+          <input type="text" name="color" class="edit-form-input" autocomplete="off">
+        </div>
+        <div class="form__el">
+          <label for="size">Size</label>
+          <input type="text" name="size" class="edit-form-input" autocomplete="off">
+        </div>
+        <div class="form__el">
+          <label for="purpose">Purpose of use</label>
+          <input type="text" name="purpose" class="edit-form-input" autocomplete="off">
+        </div>
+        <div class="form__el">
+          <label for="picture">Picture URL</label>
+          <input type="text" name="picture" class="edit-form-input" autocomplete="off">
+        </div>
+        <div class="form__el local-form__btns">
+          <button type="button" class="common-btn" id="local-save-btn" onclick="setDoc()">Save</button>
+          <button type="button" class="common-btn" id="local-cancel-btn" onclick="cancelEdditing()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </td>`
+
+  localEditForm = document.querySelector("#local-edit-form");
+
+  localEditForm.name.value = arrOfTds[0].innerHTML;
+  localEditForm.color.value = arrOfTds[1].innerHTML;
+  localEditForm.size.value = arrOfTds[2].innerHTML;
+  localEditForm.purpose.value = arrOfTds[3].innerHTML;
+  localEditForm.picture.value = arrOfTds[4].children[0].src;
+
 }
 
 function setDoc() {
-  db.collection(usersLogin).doc(itemEditing.id).set({
-    name: editForm.name.value,
-    color: editForm.color.value,
-    size: editForm.size.value,
-    purpose: editForm.purpose.value,
-    picture: editForm.picture.value,
+    db.collection(usersLogin).doc(itemEditing.id).set({
+    name: localEditForm.name.value,
+    color: localEditForm.color.value,
+    size: localEditForm.size.value,
+    purpose: localEditForm.purpose.value,
+    picture: localEditForm.picture.value,
   });
-  cancelEditing();
+  
+  if (
+    localEditForm.name.value === arrOfTds[0].innerHTML &&
+    localEditForm.color.value === arrOfTds[1].innerHTML &&
+    localEditForm.size.value === arrOfTds[2].innerHTML &&
+    localEditForm.purpose.value === arrOfTds[3].innerHTML &&
+    localEditForm.picture.value === arrOfTds[4].children[0].src
+  ) {
+    cancelEdditing()
+  }
+
 }
+
+function cancelEdditing() {
+  bigAddBtn.removeAttribute("disabled");
+  itemEditing.innerHTML = `<td class="user__username">${arrOfTds[0].innerHTML}</td>
+      <td>${arrOfTds[1].innerHTML}</td>
+      <td>${arrOfTds[2].innerHTML}</td>
+      <td>${arrOfTds[3].innerHTML}</td>
+      <td><img src="${arrOfTds[4].children[0].src}" alt="Error" class="item_img"></td>
+      <td class="btns-wrapper">
+      <button class="edit-btns__el common-btn" onclick="editItem('${itemEditing.id}')">Edit</button>
+      <button class="edit-btns__el common-btn" onclick="delItem('${itemEditing.id}')">Del</button>
+      </td>`
+}
+
 
 
 // Delete item
@@ -133,16 +195,4 @@ function delItem(idOfItem) {
   if (window.confirm("Are you sure?")) {
     db.collection(usersLogin).doc(idOfItem).delete();
   }
-}
-
-
-function cancelEditing() {
-  editForm.style.display = "none";
-  bigAddBtn.style.display = "inline";
-  bigAddBtnWrapper.style.display = "block";
-  editForm.name.value = '';
-  editForm.color.value = '';
-  editForm.size.value = '';
-  editForm.purpose.value = '';
-  editForm.picture.value = '';
 }
