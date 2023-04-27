@@ -33,8 +33,6 @@
         </table>
         <div class="change-content-btns-wrapper">
           <button class="common-btn change-content-btns__el" id="btn-add" onclick="addNewItem()">ADD</button>
-          <button class="common-btn change-content-btns__el" id="btn-edit" onclick="editItem()">EDIT</button>
-          <button class="common-btn change-content-btns__el" id="btn-del" onclick="delItem()">DEL</button>
         </div>
           <form id="edit-form">
             <div class="form__el">
@@ -60,7 +58,7 @@
             <div class="form__el">
               <button type="button" class="common-btn" id="add-btn" onclick="sendNewDoc()">Add</button>
               <button type="button" class="common-btn" id="edit-btn" onclick="setDoc()">Edit</button>
-              <button type="reset" class="common-btn" id="reset-btn">Reset</button>
+              <button type="reset" class="common-btn" id="cancel-btn" onclick="cancelEditing()">Cancel</button>
             </div>
           </form>
         </div>
