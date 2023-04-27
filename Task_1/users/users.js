@@ -26,20 +26,6 @@ title.innerHTML = `WARDROBE OF<br>${usersLogin}`;
 
 let result = [];
 
-// db.collection(usersLogin).onSnapshot((querySnapshot) => {
-//   console.log("here");
-// });
-
-// db.collection(usersLogin)
-//   .get()
-//   .then((res) => {
-//     result = res;
-//     console.log({ res });
-//     res.docs.forEach((doc) => {
-//       renderItems(doc);
-//     });
-//   });
-
 function renderItems(item) {
   wardrobe.innerHTML += `<tr class="user__element" id="${item.id}">
   <td class="user__username">${item.data().name}</td>
@@ -61,11 +47,12 @@ db.collection(usersLogin).onSnapshot(snapshot => {
   changes.forEach(change => {
     if (change.type == 'added') {
       renderItems(change.doc)
+      result.push(change.doc);
     } else if (change.type == 'removed') {
-      let item = wardrobe.querySelector('[id=' + change.doc.id + ']')
-      wardrobe.removeChild(item)
+      item = document.getElementById(`${change.doc.id}`)
+      item.remove()
     } else if (change.type == 'modified') {
-      wardrobe.querySelector('[id=' + change.doc.id + ']').innerHTML = `<td class="user__username">${change.doc.data().name}</td>
+      document.getElementById(`${change.doc.id}`).innerHTML = `<td class="user__username">${change.doc.data().name}</td>
       <td>${change.doc.data().color}</td>
       <td>${change.doc.data().size}</td>
       <td>${change.doc.data().purpose}</td>
@@ -87,12 +74,14 @@ const bigAddBtn = document.querySelector("#btn-add");
 const editForm = document.querySelector("#edit-form");
 const smallBtnAdd = document.querySelector("#add-btn");
 const smallBtnEdit = document.querySelector("#edit-btn");
+const bigAddBtnWrapper = document.querySelector('.change-content-btns-wrapper')
 
 function addNewItem() {
   editForm.style.display = "flex";
   smallBtnAdd.style.display = "inline";
   smallBtnEdit.style.display = "none";
   bigAddBtn.style.display = "none";
+  bigAddBtnWrapper.style.display = "none"
 }
 
 function sendNewDoc() {
@@ -111,12 +100,13 @@ function sendNewDoc() {
 let itemEditing;
 
 function editItem(idOfItem) {
-  itemEditing = wardrobe.querySelector('[id=' + idOfItem + ']')
+  itemEditing = document.getElementById(`${idOfItem}`)
   let arrOfTds = itemEditing.querySelectorAll('td')
 
   editForm.style.display = "flex";
   smallBtnAdd.style.display = "none";
   smallBtnEdit.style.display = "inline";
+  bigAddBtnWrapper.style.display = "none";
 
   editForm.name.value = arrOfTds[0].innerHTML;
   editForm.color.value = arrOfTds[1].innerHTML;
@@ -149,6 +139,7 @@ function delItem(idOfItem) {
 function cancelEditing() {
   editForm.style.display = "none";
   bigAddBtn.style.display = "inline";
+  bigAddBtnWrapper.style.display = "block";
   editForm.name.value = '';
   editForm.color.value = '';
   editForm.size.value = '';
